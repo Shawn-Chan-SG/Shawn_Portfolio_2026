@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Career history of Shawn Chan — 20+ years across ROCKWOOL, building materials, Singapore and Asia.">
+<title>Experience — Shawn Chan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav id="mainNav" class="scrolled">
+  <a class="nav-brand" href="index.html">SC</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="experience.html" class="active">Experience</a></li>
+    <li><a href="education.html">Education</a></li>
+    <li><a href="mailto:chanhonpan@gmail.com">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Page hero with Singapore skyline photo (matches About / Skills / Education) -->
+<header class="page-hero photo-hero">
+  <div class="photo-hero-bg"></div>
+  <div class="photo-hero-overlay"></div>
+  <div class="container photo-hero-content">
+    <p class="ph-label">03 / Experience</p>
+    <h1 class="ph-title">Career History</h1>
+    <p class="ph-sub">20+ years across Singapore, Vietnam &amp; Asia-Pacific</p>
+  </div>
+</header>
+
+<style>
+/* ── Photo hero (page header) ── */
+.photo-hero {
+  position: relative;
+  min-height: 65vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 4rem;
+  overflow: hidden;
+}
+.photo-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1574227492706-f65b24c3688a?auto=format&fit=crop&w=1920&q=88');
+  background-size: cover;
+  background-position: center 42%;
+  transform: scale(1.04);
+  transition: transform 8s ease-out;
+}
+.photo-hero-bg.loaded { transform: scale(1.0); }
+.photo-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(7,9,20,0.38) 0%,
+    rgba(7,9,20,0.22) 35%,
+    rgba(7,9,20,0.55) 70%,
+    rgba(7,9,20,0.82) 100%
+  );
+}
+.photo-hero-content { position: relative; z-index: 2; }
+.photo-hero::before { display: none; }
+
+/* ── Timeline card photo panel ──
+   Place your photos in a "photo" subfolder inside this site folder.
+   Expected filenames:
+     photo/singapore.jpg   — Country Manager, Marketing & Ops, Key Account Manager
+     photo/vietnam.jpg     — Director Vietnam
+     photo/korea.jpg       — Business Development Manager
+     photo/kl.jpg          — Commercial Excellence Manager
+     photo/china.jpg       — Head of Product Marketing, Head of Technical Services
+     photo/malaysia.jpg    — Technical Sales Support Manager
+     photo/australia.jpg   — Assistant Building Certifier
+     photo/esplanade.jpg   — Site & Safety Supervisor
+*/
+.tl-card {
+  overflow: hidden;      /* keeps photo corners clipped to card radius */
+}
+.tl-card-photo {
+  height: 210px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  background-color: #0b0f1f;  /* shows while photo loads */
+  flex-shrink: 0;
+}
+.tl-card-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* gradient: clear at top so scenery shows, darker at base for the label */
+  background: linear-gradient(
+    to bottom,
+    rgba(7,9,20,0.08) 0%,
+    rgba(7,9,20,0.30) 60%,
+    rgba(7,9,20,0.72) 100%
+  );
+}
+.tl-card-loc {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.5rem;
+  z-index: 2;
+  font-size: 0.60rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(237,232,225,0.90);
+  font-family: 'Inter', system-ui, sans-serif;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+@media (max-width: 680px) {
+  .tl-card-photo { height: 160px; }
+}
+</style>
+
+<main class="section">
+  <div class="container">
+    <div class="section-header">
+      <p class="label">Drag or use arrow keys to explore</p>
+      <h2 class="section-title" style="margin-top:0.75rem;">Interactive Timeline</h2>
+    </div>
+
+    <div class="tl-wrap">
+      <!-- Slider controls -->
+      <div class="tl-slider-row">
+        <span class="tl-year-label" id="tlYear">2026</span>
+        <div class="tl-slider-container">
+          <input type="range" id="tlRange" min="0" max="10" step="1" value="0" aria-label="Career timeline">
+        </div>
+        <div class="tl-nav-btns">
+          <button class="tl-btn" id="tlPrev" aria-label="Previous role">
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M13 5H1M5 1L1 5l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="tl-btn" id="tlNext" aria-label="Next role">
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Timeline cards -->
+      <div id="tlCards">
+
+        <!-- Card 0: Country Manager — Singapore -->
+        <article class="tl-card active" data-year="2026">
+          <div class="tl-card-photo" style="background-image:url('photo/singapore.jpg'),url('https://images.unsplash.com/photo-1496939376851-89342e90adcd?auto=format&fit=crop&w=1600&q=80')">
+            <span class="tl-card-loc">Singapore</span>
+          </div>
+          <div class="tl-card-inner">
+            <div class="tl-meta">
+              <p class="tl-period">Jan 2026 — Present</p>
+              <h3 class="tl-role">Country Manager</h3>
+              <p class="tl-company">ROCKWOOL Building Materials<br>(Singapore) Pte Ltd</p>
+              <p class="tl-location">Singapore</p>
+            </div>
+            <div class="tl-body">
+              <p>Lead full P&amp;L ownership for ROCKWOOL's Singapore market operations. Drive national sales, marketing and operational strategy for one of the world's leading stone wool insulation manufacturers.</p>
+              <ul>
+                <li>Accountable for revenue targets, cost management and profitability for Singapore insulation business</li>
+                <li>Develop and execute market entry and growth strategies in the building materials sector</li>
+                <li>Manage key stakeholder relationships with contractors, developers and government agencies</li>
+                <li>Oversee cross-functional teams spanning sales, technical, marketing and logistics</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 1: Director Vietnam — Vietnam -->
+        <article class="tl-card" data-year="2024">
+          <div class="tl-card-photo" style="background-image:url('photo/vietnam.avif'),url('https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1600&q=80');background-position:center 55%">
+            <span class="tl-card-loc">Vietnam · Ho Chi Minh City</span>
+          </div>
+          <div class="tl-card-inner">
+            <div class="tl-meta">
+              <p class="tl-period">Sep 2024 — Dec 2025</p>
+              <h3 class="tl-role">Director</h3>
+              <p class="tl-company">ROCKWOOL Khai Hoan JSC<br>Vietnam</p>
+              <p class="tl-location">Vietnam</p>
+            </div>
+            <div class="tl-body">
+              <p>Lead the full Vietnamese operation for ROCKWOOL's joint venture, managing a 130-person organisation across sales, production, logistics and administration.</p>
+              <ul>
+                <li>Doubled company revenue within 12 months through market expansion and channel development</li>
+                <li>Restructured commercial team and implemented new go-to-market strategy</li>
+                <li>Drove business and operations integration while delivering significant improvement in operational efficiency and customer satisfaction</li>
+                <li>Ensure risk management, governance and operational safety</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Business Development Manager — Korea -->
+        <article class="tl-card" data-year="2020">
+          <div class="tl-card-photo" style="background-image:url('photo/korea.jpg'),url('https://images.unsplash.com/photo-1506816561089-5cc37b3aa9b0?auto=format&fit=crop&w=1600&q=80');background-position:center 60%">
+            <span class="tl-card-loc">Korea · Seoul</span>
+          </div>
+          <div class="tl-card-inner">
+            <div class="tl-meta">
+              <p class="tl-period">Feb 2020 — Aug 2024</p>
+              <h3 class="tl-role">Business Development Manager</h3>
+              <p class="tl-company">ROCKWOOL Building Materials<br>(Singapore) Pte Ltd</p>
+              <p class="tl-location">Singapore</p>
+            </div>
+            <div class="tl-body">
+              <p>Lead Singapore Marketing and regional business development for insulated sandwich panel products, developing regional strategic growth plans and driving implementation with local business units.</p>
+              <ul>
+                <li>Managed M&amp;A integration of Bestofire and Thermal Pte Ltd (2020), expanding product portfolio and market reach across Southeast Asia</li>
+                <li>Developed and executed regional BD strategies in sandwiched panel business, working closely with local business units in Korea, Thailand, Vietnam and Australia</li>
+                <li>Develop new business in agriculture substrates and fire protection business in Singapore</li>
+                <li>Lead cross-functional initiatives spanning product development, pricing, marketing and technical support</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: Marketing & Operations — Singapore -->
+        <article class="tl-card" data-year="2019">
+          <div class="tl-card-photo" style="background-image:url('photo/singapore.jpg'),url('https://images.unsplash.com/photo-1558289675-f8a783516e7b?auto=format&fit=crop&w=1600&q=80')">
+            <span class="tl-card-loc">Singapore</span>
+          </div>
+          <div class="tl-card-inner">
+            <div class="tl-meta">
+              <p class="tl-period">Jan 2019 — Jan 2020</p>
+              <h3 class="tl-role">Marketing &amp; Operations Manager</h3>
+              <p class="tl-company">ROCKWOOL Building Materials<br>(Singapore) Pte Ltd</p>
+              <p class="tl-location">Singapore</p>
+            </div>
+            <div class="tl-body">
+              <p>Oversaw the integration of marketing and operations functions to deliver a cohesive commercial strategy, improving go-to-market efficiency and brand positioning in Singapore.</p>
+              <ul>
+                <li>Lead end-to-end marketing campaigns spanning digital, events, trade and specification channels</li>
+                <li>Managed operational workflow improvements, reducing lead times and improving customer experience</li>
+                <li>Coordinated cross-functional teams to align marketing and operational priorities in Singapore</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4: Commercial Excellence — KL -->
+        <article class="tl-card" data-year="2017">
+          <div class="tl-card-photo" style="background-image:url('photo/kl.jpg'),url('https://images.unsplash.com/photo-1755434959823-153add7d1bd9?auto=format&fit=crop&w=1600&q=80')">
+            <span class="tl-card-loc">Kuala Lumpur</span>
+          </div>
+          <div class="tl-card-inner">
+            <div class="tl-meta">
+              <p class="tl-period">Jan 2017 — Dec 2018</p>
+              <h3 class="tl-role">Commercial Excellence Manager</h3>
+              <p class="tl-company">ROCKWOOL Building Materials<br>(Singapore) Pte Ltd</p>
+              <p class="tl-location">Singapore / SEA</p>
+            </div>
+            <div class="tl-body">
+              <p>Drove commercial capability building and sales effectiveness programs to lift the performance of the commercial team across Southeast Asia.</p>
+              <ul>
+                <li>Designed and deployed pricing frameworks, sales tools and CRM disciplines across SEA markets</li>
+                <li>Lead commercial training programs to raise consultative selling competencies in local business units</li>
+                <li>Contributed to Singapore Standards Council technical committees (2017–2018)</li>
+                <li>Represented ROCKWOOL on Singapore Manufacturing Federation BPCM Council (2015–2018)</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5: Head of Product Marketing — KL -->
+        <article class="tl-card" data-year="2014">
+          <div class="tl-card-photo" style="background-image:url('photo/kl.jpg'),url('https://images.unsplash.com/photo-1755434959823-153add7d1bd9?auto=format&fit=crop&w=1600&q=80');background-position:center 45%">
+            <span class="tl-card-loc">Kuala Lumpur</span>
+          </div>
+          <div class="tl-card-inner">
+            <div class="tl-meta">
+              <p class="tl-period">Jun 2014 — Jan 2017</p>
+              <h3 class="tl-role">Head of Product Marketing</h3>
+              <p class="tl-company">ROCKWOOL Building Materials<br>(Singapore) Pte Ltd</p>
+              <p class="tl-location">Singapore / China</p>
+            </div>
+            <div class="tl-body">
+              <p>Lead product marketing strategy for the full ROCKWOOL portfolio across Asia, driving product positioning, pricing architecture, launch campaigns and go-to-market plans in partnership with local business units across the region.</p>
+              <ul>
+                <li>Developed a segmented product range aligned to diverse building codes and market requirements, successfully launched to all business units across Asia</li>
+                <li>Partnered with local business units in Asia to plan and execute product rollouts, ensuring adoption and market readiness in each market</li>
+                <li>Collaborated with global product and R&amp;D teams in Europe and China to localise product strategies and positioning for Asian markets</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 6: Head of Technical Services — China -->
+        <article class="tl-card" data-year="2010">
+          <div class="tl-card-photo" style="background-image:url('photo/china.jpg'),url('https://images.unsplash.com/photo-1488780789957-7017db150fb7?auto=format&fit=crop&w=1600&q=80');background-position:center center">
+            <span class="tl-card-loc">China · Guangzhou</span>
+          </div>
+          <div class="tl-card-inner">
+            <div class="tl-meta">
+              <p class="tl-period">Oct 2010 — Jun 2014</p>
+              <h3 class="tl-role">Head of Technical Services</h3>
+              <p class="tl-company">ROCKWOOL Building Materials<br>(Singapore) Pte Ltd</p>
+              <p class="tl-location">Singapore / China</p>
+            </div>
+            <div class="tl-body">
+              <p>Established and lead the technical services function across Asia, positioning ROCKWOOL as the authoritative voice on acoustic, thermal and fire insulation performance across the region.</p>
+              <ul>
+                <li>Built technical team from scratch; developed testing protocols, compliance documentation and technical standards across Asian markets</li>
+                <li>Provided technical support to architects, engineers and M&amp;E consultants across Asia, ensuring specification and building code compliance</li>
+                <li>Represented ROCKWOOL in regulatory and industry code development committees across Asia, including BCA and SCDF engagements in Singapore</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 7: Technical Sales Support — Malaysia -->
+        <article class="tl-card" data-year="2008">
+          <div class="tl-card-photo" style="background-image:url('photo/malaysia.jpg'),url('https://images.unsplash.com/photo-1589733000502-225e3f26fb8f?auto=format&fit=crop&w=1600&q=80');background-position:center 60%">
+            <span class="tl-card-loc">Malaysia · Melaka</span>
+          </div>
+          <div class="tl-card-inner">
+            <div class="tl-meta">
+              <p class="tl-period">Jul 2008 — Oct 2010</p>
+              <h3 class="tl-role">Technical Sales Support Manager</h3>
+              <p class="tl-company">ROCKWOOL Building Materials<br>(Singapore) Pte Ltd</p>
+              <p class="tl-location">Singapore / Malaysia</p>
+            </div>
+            <div class="tl-body">
+              <p>Provided pre-sales technical expertise to support the commercial team in winning specifications and project business across Singapore and Southeast Asia.</p>
+              <ul>
+                <li>Delivered technical seminars and product training for contractors and specifiers across the region</li>
+                <li>Supported design-stage specification activities with architects and engineers in Singapore and Malaysia</li>
+                <li>Managed product compliance submissions and SISIR / BCA certification processes</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 8: Key Account Manager — Singapore -->
+        <article class="tl-card" data-year="2006">
+          <div class="tl-card-photo" style="background-image:url('photo/singapore.jpg'),url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1600&q=80')">
+            <span class="tl-card-loc">Singapore</span>
+          </div>
+          <div class="tl-card-inner">
+            <div class="tl-meta">
+              <p class="tl-period">Mar 2006 — Jun 2008</p>
+              <h3 class="tl-role">Key Account Manager</h3>
+              <p class="tl-company">ROCKWOOL Building Materials<br>(Singapore) Pte Ltd</p>
+              <p class="tl-location">Singapore</p>
+            </div>
+            <div class="tl-body">
+              <p>Managed key contractor and developer accounts, delivering year-on-year revenue growth while deepening strategic relationships across the Singapore construction sector.</p>
+              <ul>
+                <li>Grew key account revenue through proactive project pipeline management</li>
+                <li>Coordinated with technical and logistics teams to ensure seamless project delivery</li>
+                <li>Played a key role in expanding ROCKWOOL's coverage into new construction segments</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 9: Assistant Building Certifier — Australia -->
+        <article class="tl-card" data-year="2004">
+          <div class="tl-card-photo" style="background-image:url('photo/australia.jpg'),url('https://images.unsplash.com/photo-1583558983725-35d6a5ce7fb8?auto=format&fit=crop&w=1600&q=80');background-position:center 65%">
+            <span class="tl-card-loc">Australia · Alice Springs</span>
+          </div>
+          <div class="tl-card-inner">
+            <div class="tl-meta">
+              <p class="tl-period">Jan 2004 — Nov 2005</p>
+              <h3 class="tl-role">Assistant Building Certifier &amp; Surveyor</h3>
+              <p class="tl-company">Private Practice</p>
+              <p class="tl-location">Adelaide, Australia</p>
+            </div>
+            <div class="tl-body">
+              <p>Worked in private building certification practice in Adelaide following graduation with First Class Honours from the University of South Australia.</p>
+              <ul>
+                <li>Conducted building inspections and compliance assessments under the Building Code of Australia</li>
+                <li>Issued building permits and certificates of occupancy for residential and commercial projects</li>
+                <li>Applied structural and fire-safety knowledge from academic training to live construction projects</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 10: Site & Safety Supervisor — Esplanade -->
+        <article class="tl-card" data-year="2001">
+          <div class="tl-card-photo" style="background-image:url('photo/esplanade.jpg'),url('https://images.unsplash.com/photo-1771556303035-619da9a24e10?auto=format&fit=crop&w=1600&q=80');background-position:center 40%">
+            <span class="tl-card-loc">Singapore · Esplanade</span>
+          </div>
+          <div class="tl-card-inner">
+            <div class="tl-meta">
+              <p class="tl-period">Nov 2001 — Jun 2002</p>
+              <h3 class="tl-role">Site &amp; Safety Supervisor</h3>
+              <p class="tl-company">LTA Underground Project</p>
+              <p class="tl-location">Singapore (CityLink Mall to Esplanade)</p>
+            </div>
+            <div class="tl-body">
+              <p>Supervised site safety and construction operations for a major underground LTA project in Singapore's civic district, linking CityLink Mall to the Esplanade.</p>
+              <ul>
+                <li>Enforced site safety protocols across multi-trade construction environment</li>
+                <li>Coordinated daily site activities between sub-contractors, engineers and project management</li>
+                <li>Gained early exposure to large-scale infrastructure delivery in Singapore's built environment</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- end #tlCards -->
+
+      <p class="tl-progress" id="tlProgress">Role 1 of 11</p>
+    </div>
+
+    <!-- Full timeline list -->
+    <div class="tl-full" style="margin-top:6rem;">
+      <div class="section-header">
+        <p class="label">Full Record</p>
+        <h2 class="section-title" style="margin-top:0.75rem;">All Roles</h2>
+      </div>
+
+      <div class="tl-full-item reveal">
+        <div class="tl-full-year">2026 – Now</div>
+        <div>
+          <p class="tl-full-title">Country Manager</p>
+          <p class="tl-full-co">ROCKWOOL Building Materials (Singapore) Pte Ltd</p>
+          <p class="tl-full-desc">P&amp;L ownership of Singapore market. National sales, marketing and operational strategy.</p>
+        </div>
+      </div>
+
+      <div class="tl-full-item reveal">
+        <div class="tl-full-year">2024 – 2025</div>
+        <div>
+          <p class="tl-full-title">Director</p>
+          <p class="tl-full-co">ROCKWOOL Khai Hoan JSC, Vietnam</p>
+          <p class="tl-full-desc">Lead 130-person Vietnamese operation. Doubled revenue within 12 months.</p>
+        </div>
+      </div>
+
+      <div class="tl-full-item reveal">
+        <div class="tl-full-year">2020 – 2024</div>
+        <div>
+          <p class="tl-full-title">Business Development Manager</p>
+          <p class="tl-full-co">ROCKWOOL Building Materials (Singapore) Pte Ltd</p>
+          <p class="tl-full-desc">Lead Singapore Marketing and regional BD for insulated sandwich panel products. M&amp;A integration of Bestofire and Thermal Pte Ltd (2020).</p>
+        </div>
+      </div>
+
+      <div class="tl-full-item reveal">
+        <div class="tl-full-year">2019 – 2020</div>
+        <div>
+          <p class="tl-full-title">Marketing &amp; Operations Manager</p>
+          <p class="tl-full-co">ROCKWOOL Building Materials (Singapore) Pte Ltd</p>
+          <p class="tl-full-desc">Unified marketing and operations under one commercial mandate.</p>
+        </div>
+      </div>
+
+      <div class="tl-full-item reveal">
+        <div class="tl-full-year">2017 – 2018</div>
+        <div>
+          <p class="tl-full-title">Commercial Excellence Manager</p>
+          <p class="tl-full-co">ROCKWOOL Building Materials (Singapore) Pte Ltd</p>
+          <p class="tl-full-desc">Pricing frameworks, sales tools and commercial capability programs across SEA.</p>
+        </div>
+      </div>
+
+      <div class="tl-full-item reveal">
+        <div class="tl-full-year">2014 – 2017</div>
+        <div>
+          <p class="tl-full-title">Head of Product Marketing</p>
+          <p class="tl-full-co">ROCKWOOL Building Materials (Singapore) Pte Ltd</p>
+          <p class="tl-full-desc">Regional product marketing strategy, segmented portfolio development and market launch across Asia.</p>
+        </div>
+      </div>
+
+      <div class="tl-full-item reveal">
+        <div class="tl-full-year">2010 – 2014</div>
+        <div>
+          <p class="tl-full-title">Head of Technical Services</p>
+          <p class="tl-full-co">ROCKWOOL Building Materials (Singapore) Pte Ltd</p>
+          <p class="tl-full-desc">Built and lead technical services function across Asia; represented ROCKWOOL in regional industry and regulatory committees.</p>
+        </div>
+      </div>
+
+      <div class="tl-full-item reveal">
+        <div class="tl-full-year">2008 – 2010</div>
+        <div>
+          <p class="tl-full-title">Technical Sales Support Manager</p>
+          <p class="tl-full-co">ROCKWOOL Building Materials (Singapore) Pte Ltd</p>
+          <p class="tl-full-desc">Pre-sales technical support for architects, engineers and main contractors.</p>
+        </div>
+      </div>
+
+      <div class="tl-full-item reveal">
+        <div class="tl-full-year">2006 – 2008</div>
+        <div>
+          <p class="tl-full-title">Key Account Manager</p>
+          <p class="tl-full-co">ROCKWOOL Building Materials (Singapore) Pte Ltd</p>
+          <p class="tl-full-desc">Key contractor and developer accounts across Singapore construction sector.</p>
+        </div>
+      </div>
+
+      <div class="tl-full-item reveal">
+        <div class="tl-full-year">2004 – 2005</div>
+        <div>
+          <p class="tl-full-title">Assistant Building Certifier &amp; Surveyor</p>
+          <p class="tl-full-co">Private Practice, Adelaide</p>
+          <p class="tl-full-desc">Building inspections, compliance assessments and permit issuance under the BCA.</p>
+        </div>
+      </div>
+
+      <div class="tl-full-item reveal">
+        <div class="tl-full-year">2001 – 2002</div>
+        <div>
+          <p class="tl-full-title">Site &amp; Safety Supervisor</p>
+          <p class="tl-full-co">LTA Underground Project, Singapore</p>
+          <p class="tl-full-desc">CityLink Mall to Esplanade underground infrastructure project.</p>
+        </div>
+      </div>
+
+    </div><!-- end tl-full -->
+
+  </div>
+</main>
+
+<nav class="bottom-nav">
+  <a class="bn-item" href="about.html"><span class="bn-num">01</span><span class="bn-label">About</span><span class="bn-arrow"></span></a>
+  <a class="bn-item" href="skills.html"><span class="bn-num">02</span><span class="bn-label">Skills</span><span class="bn-arrow"></span></a>
+  <a class="bn-item" href="education.html"><span class="bn-num">04</span><span class="bn-label">Education</span><span class="bn-arrow"></span></a>
+  <a class="bn-item" href="mailto:chanhonpan@gmail.com"><span class="bn-num">Contact</span><span class="bn-label">Get in Touch</span><span class="bn-arrow"></span></a>
+</nav>
+
+<footer>
+  <p>© 2026 Shawn Chan · Singapore</p>
+  <a href="mailto:chanhonpan@gmail.com">chanhonpan@gmail.com</a>
+</footer>
+
+<script>
+// Nav
+const nav = document.getElementById('mainNav');
+nav.classList.add('scrolled');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+const toggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+// Trigger Ken Burns on hero photo
+const heroBg = document.querySelector('.photo-hero-bg');
+if (heroBg) {
+  const testImg = new Image();
+  testImg.onload = () => heroBg.classList.add('loaded');
+  testImg.src = 'https://images.unsplash.com/photo-1574227492706-f65b24c3688a?auto=format&fit=crop&w=1920&q=88';
+}
+
+// Timeline
+const tlYears = ['2026','2024','2020','2019','2017','2014','2010','2008','2006','2004','2001'];
+const cards = document.querySelectorAll('.tl-card');
+const range = document.getElementById('tlRange');
+const yearLabel = document.getElementById('tlYear');
+const progressEl = document.getElementById('tlProgress');
+let current = 0;
+
+function showCard(idx) {
+  if (idx < 0 || idx >= cards.length) return;
+  cards[current].classList.remove('active');
+  current = idx;
+  cards[current].classList.add('active');
+  range.value = current;
+  yearLabel.textContent = tlYears[current];
+  progressEl.textContent = 'Role ' + (current + 1) + ' of ' + cards.length;
+}
+
+range.addEventListener('input', () => showCard(parseInt(range.value)));
+document.getElementById('tlPrev').addEventListener('click', () => showCard(current - 1));
+document.getElementById('tlNext').addEventListener('click', () => showCard(current + 1));
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp')  { e.preventDefault(); showCard(current - 1); }
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); showCard(current + 1); }
+});
+
+// Touch swipe
+let touchStartX = 0;
+const tlWrap = document.getElementById('tlCards');
+tlWrap.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+tlWrap.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) showCard(diff > 0 ? current + 1 : current - 1);
+});
+
+// Scroll reveal
+const ioRev = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ioRev.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => ioRev.observe(el));
+
+showCard(0);
+</script>
+</body>
+</html>
